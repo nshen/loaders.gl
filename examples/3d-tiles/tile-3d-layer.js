@@ -115,11 +115,16 @@ function commonSpacePlanesToWGS84(viewport, cullingVolume, center) {
   const frustumPlanes = viewport.getFrustumPlanes();
   let out = false;
   let outDir = null;
+
   for (const dir in frustumPlanes) {
     const plane = frustumPlanes[dir];
-    scratchPosition.copy(plane.n).scale(plane.d);
-    // const cartographicPos = viewport.unprojectPosition(scratchPosition);
-    const cartographicPos = viewport.unproject(scratchPosition);
+    const distanceToCenter = plane.n.dot(viewport.center);
+    // n is not normalized!
+    // TODO - fix in deck?
+    const nLen = plane.n.len();
+    scratchPosition.copy(plane.n).scale((plane.d - distanceToCenter) / nLen / nLen).add(viewport.center);
+    const cartographicPos = viewport.unprojectPosition(scratchPosition);
+    // const cartographicPos = viewport.unproject(scratchPosition);
     const cartesianPos = Ellipsoid.WGS84.cartographicToCartesian(
       cartographicPos,
       new Vector3()
@@ -129,7 +134,7 @@ function commonSpacePlanesToWGS84(viewport, cullingVolume, center) {
     // If normalizing this is the actual plane normal
     // Then we want the dot the orig cartesianPos onto the subtract and normalized version to get the actual plane dist and then re-determine the plane position
 
-    scratchPlane.normal.copy(cartesianPos).subtract(viewportCenterCartesian).scale(-1).normalize();
+    scratchPlane.normal.copy(cartesianPos).subtract(viewportCenterCartesian).normalize();
     scratchPlane.distance = Math.abs(scratchPlane.normal.dot(cartesianPos));
 
     if (dir === 'near') {
@@ -295,7 +300,7 @@ export default class Tile3DLayer extends CompositeLayer {
     // This should be -1
     // console.log('cameraDir: ' + cameraDirectionCartesian);
     // console.log('nearDir: ' + planeNormalCartesian);
-    // console.log('dot near camera: ' + planeNormalCartesian.dot(cameraDirectionCartesian));
+    console.log('dot near camera: ' + planeNormalCartesian.dot(cameraDirectionCartesian));
     // console.log('near dist from cam: ' + dist);
 
     // Camera direction faces opposite of look direction
