@@ -75,10 +75,7 @@ function behindPlane2(planeNor, planePos,  testPos) {
 }
 
 function behindPlane(plane, testPos) {
-  const planePos = new Vector3(plane.normal).scale(plane.distance);
-  const toTestPos = new Vector3(testPos).subtract(planePos);
-  const dist = plane.normal.dot(toTestPos);
-  return dist < 0;
+  return plane.normal.dot(testPos) > plane.distance;
 }
 
 function commonSpacePlanesToWGS84(viewport, cullingVolume, center) {
@@ -301,7 +298,7 @@ export default class Tile3DLayer extends CompositeLayer {
     // console.log('cameraDir: ' + cameraDirectionCartesian);
     // console.log('nearDir: ' + planeNormalCartesian);
     console.log('dot near camera: ' + planeNormalCartesian.dot(cameraDirectionCartesian));
-    // console.log('near dist from cam: ' + dist);
+    console.log('near dist from cam: ' + dist);
 
     // Camera direction faces opposite of look direction
     const toCenter = boundCenter.subtract(cameraPositionCartesian).normalize();
