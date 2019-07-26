@@ -25,6 +25,7 @@ const STYLES = {
 };
 
 const STAT_STYLES = {
+  display: 'none',
   position: 'fixed',
   fontSize: '12px',
   zIndex: 10000,
@@ -156,10 +157,10 @@ export default class AnimationLoopRunner extends Component {
       <div className="fg" style={{width: '100%', height: '100%', padding: 0, border: 0}}>
         {
           stats ?
-          <div ref="stats" className="stats" style={STAT_STYLES}>
-            <div ref="renderStats" className="renderStats"/>
-            <div ref="memStats" className="memStats"/>
-          </div> : null
+           <div ref="stats" className="stats" style={STAT_STYLES}>
+             <div ref="renderStats" className="renderStats"/>
+             <div ref="memStats" className="memStats"/>
+           </div> : null
         }
         <canvas
           id={this.props.canvas}
