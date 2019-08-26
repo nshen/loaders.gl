@@ -62,7 +62,7 @@ Assuming `@loaders.gl/polyfills` and additional appropriate polyfills (e.g. babe
 
 ## Licenses, Credits and Attributions
 
-loaders.gl currently contains a collection of MIT and Apache licensed loaders. Each loader comes with its own license, so if the distinction matters to you, please check and decide accordingly. Additional licenses might be considered in the future, however loaders.gl will never include code with non-permissive, commercial or copy-left licenses.
+loaders.gl currently contains a collection of MIT, BSD 2-clause and Apache licensed loaders. Each loader comes with its own license, so if the distinction matters to you, please check and decide accordingly. Additional licenses might be considered in the future, however loaders.gl will never include code with non-permissive, commercial or copy-left licenses.
 
 loaders.gl is partly a repackaging of superb work done by many others in the open source community. We try to be as explicit as we can about the origins and attributions of each loader, both in the documentation page for each loader and in the preservation of comments relating to authorship and contributions inside forked source code.
 

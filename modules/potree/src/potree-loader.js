@@ -1,6 +1,6 @@
 export default {
-  name: '3D Tileset',
+  name: 'potree',
   extensions: ['json'],
-  testText: text => text.indexOf('asset') >= 0,
+  testText: text => text.indexOf('octreeDir') >= 0,
   parseTextSync: JSON.parse
 };

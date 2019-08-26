@@ -1,6 +1,6 @@
 # Tileset3DLoader
 
-> The 3D tile loaders are still under development.
+> The 3D tiles loaders are experimental. Implementation and APIs may be subject to change.
 
 Parses a main tileset JSON file as the entry point to define a 3D tileset.
 

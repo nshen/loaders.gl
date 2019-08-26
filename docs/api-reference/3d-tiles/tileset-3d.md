@@ -1,6 +1,6 @@
 # Tileset3D
 
-> The 3D tiles loaders are still under development.
+> The 3D tiles loaders are experimental. Implementation and APIs may be subject to change.
 
 This class can be instantiated with tileset data formatted according to the [3D Tiles Category](docs/specifications/3d-tiles), which is supported by the [Tileset3DLoader](docs/api-reference/3d-tiles/tileset-3d-loader).
 
